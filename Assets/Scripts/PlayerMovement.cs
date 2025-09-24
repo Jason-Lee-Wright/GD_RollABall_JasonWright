@@ -10,9 +10,12 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 0;
 
+    private GameManager gameManager;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     void OnMove(InputValue movementValue)
@@ -28,6 +31,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        gameManager.pickUpLogic.PickUpAction(other.gameObject);
+        Debug.Log(other.gameObject);
     }
 }
 

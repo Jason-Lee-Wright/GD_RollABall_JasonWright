@@ -6,6 +6,7 @@ CHange player to
 	- Disco Ball
 	- human head?????
 	- sheet music
+	- Jelly Fish
 
 Model a metronome
 Collectibles can be music notes
@@ -26,4 +27,4 @@ Piano that sends out shockwaves??
 
 ENEMY MOVEMENT
 
-Have a script that sends out a signal every beat, and enemies can only add a burts of force each signal
+Have a script that sends out a signal every beat, and enemies can only add a burst of force each signal
