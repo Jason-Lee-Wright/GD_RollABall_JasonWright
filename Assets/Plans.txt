@@ -5,9 +5,25 @@ CHange player to
 	- animated with colors
 	- Disco Ball
 	- human head?????
+	- sheet music
 
 Model a metronome
+Collectibles can be music notes
 
 Time Travel?
 Play the piano to get tempo sounds?
 Conducotr/narorator???
+
+Piano that sends out shockwaves??
+	- Each note has a different streth, and the force lowers the further it is from the piano.
+	- Hiding behind Objects will protects you.
+	- Have multiple Animations/Textures to show damage
+		* an animation the just flashes colors will lose colors until game over
+		* Disco ball, and bell will get cracks
+		* head will bleed??
+
+
+
+ENEMY MOVEMENT
+
+Have a script that sends out a signal every beat, and enemies can only add a burts of force each signal
