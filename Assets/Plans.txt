@@ -1,0 +1,13 @@
+Make movement based of rythym/timing
+
+CHange player to
+	- Bell
+	- animated with colors
+	- Disco Ball
+	- human head?????
+
+Model a metronome
+
+Time Travel?
+Play the piano to get tempo sounds?
+Conducotr/narorator???
