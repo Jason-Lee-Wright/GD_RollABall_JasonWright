@@ -30,3 +30,5 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 }
+
+//Rythym based movemenr. have a bar that scales from 0-1, and mulitplys the movement force alone with how close you are to the beat.
