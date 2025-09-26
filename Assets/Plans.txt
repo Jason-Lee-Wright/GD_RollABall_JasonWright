@@ -1,6 +1,6 @@
-Make movement based of rythym/timing
+Make movement based of rhythm/timing
 
-CHange player to
+Change player to
 	- Bell
 	- animated with colors
 	- Disco Ball
@@ -13,10 +13,10 @@ Collectibles can be music notes
 
 Time Travel?
 Play the piano to get tempo sounds?
-Conducotr/narorator???
+Conductor/narrator???
 
 Piano that sends out shockwaves??
-	- Each note has a different streth, and the force lowers the further it is from the piano.
+	- Each note has a different strength, and the force lowers the further it is from the piano.
 	- Hiding behind Objects will protects you.
 	- Have multiple Animations/Textures to show damage
 		* an animation the just flashes colors will lose colors until game over

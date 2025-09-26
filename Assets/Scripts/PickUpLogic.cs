@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class PickUpLogic : MonoBehaviour
 {
-    public TextMeshProUGUI Score;
+    private GameManager gameManager;
 
-    private int ScoreCount = 0;
+    private void Start()
+    {
+        gameManager = FindAnyObjectByType<GameManager>();
+    }
 
     public void PickUpAction(GameObject HitObject)
     {
@@ -22,10 +25,6 @@ public class PickUpLogic : MonoBehaviour
 
     void PickUpPoint()
     {
-        ScoreCount++;
-
-        Debug.Log("Score" +  ScoreCount);
-
-        //Score.text = $"Score: {ScoreCount}";
+        gameManager.uiManager.ScoreIncrease();
     }
 }
