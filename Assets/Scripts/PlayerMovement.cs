@@ -36,7 +36,11 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         gameManager.pickUpLogic.PickUpAction(other.gameObject);
-        Debug.Log(other.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        gameManager.pickUpLogic.PickUpAction(collision.gameObject);
     }
 }
 
