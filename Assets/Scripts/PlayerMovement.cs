@@ -1,14 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
 
-    private float movementX;
-    private float movementY;
+    public float speed = 5f;
 
-    public float speed = 0;
+    public float BPM = 114f;
+    private float BeatInterval;
+    private float SongPosition;
+
+    public Slider BPMSlider;
+    //If BPMSlider is offset CHECK THE SLIDER VALUES IN THE INSPECTOR
 
     private GameManager gameManager;
 
@@ -16,21 +21,35 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         gameManager = FindAnyObjectByType<GameManager>();
+
+        BeatInterval = 60f / BPM;
+        SongPosition = 0f;
+    }
+
+    void Update()
+    {
+        SongPosition += Time.deltaTime;
+
+        if (BPMSlider != null)
+        {
+            float beatProgress = (SongPosition % BeatInterval) / BeatInterval;
+            BPMSlider.value = beatProgress;
+        }
     }
 
     void OnMove(InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
+        if (movementVector == Vector2.zero) return;
 
-        movementX = movementVector.x;
-        movementY = movementVector.y;
-    }
+        float timeSinceLastBeat = SongPosition % BeatInterval;
+        float distanceToBeat = Mathf.Min(timeSinceLastBeat, BeatInterval - timeSinceLastBeat);
 
-    private void FixedUpdate()
-    {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+        float closeness = 1f - (distanceToBeat / (BeatInterval / 2f));
+        closeness = Mathf.Clamp01(closeness);
 
-        rb.AddForce(movement * speed);
+        Vector3 movement = new Vector3(movementVector.x, 0f, movementVector.y);
+        rb.linearVelocity = movement.normalized * speed * closeness;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,5 +62,3 @@ public class PlayerMovement : MonoBehaviour
         gameManager.pickUpLogic.PickUpAction(collision.gameObject);
     }
 }
-
-//Rythym based movemenr. have a bar that scales from 0-1, and mulitplys the movement force alone with how close you are to the beat.
