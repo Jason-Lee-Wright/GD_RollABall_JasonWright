@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -17,10 +18,15 @@ public class PlayerMovement : MonoBehaviour
 
     private GameManager gameManager;
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        gameManager = FindAnyObjectByType<GameManager>();
+        BPMSlider = Slider.FindAnyObjectByType<Slider>();
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        gameManager = FindAnyObjectByType<GameManager>();
 
         BeatInterval = 60f / BPM;
         SongPosition = 0f;
@@ -60,5 +66,16 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         gameManager.pickUpLogic.PickUpAction(collision.gameObject);
+    }
+
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

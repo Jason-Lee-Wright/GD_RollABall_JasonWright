@@ -23,6 +23,8 @@ Piano that sends out shockwaves??
 		* Disco ball, and bell will get cracks
 		* head will bleed??
 
+Make a stamina Bar so player cant spam
+	Stamina will lower each movement press, and restore every pulse.
 
 
 ENEMY MOVEMENT
