@@ -3,20 +3,35 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    private bool CanPause = false;
-    private bool IsPaused = false;
+    [SerializeField] private bool CanPause = false;
+    [SerializeField] private bool IsPaused = false;
 
-    private GameObject PauseMenu;
+    [SerializeField] private GameObject PauseMenu;
 
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        PauseMenu = GameObject.Find("PauseMenu");
+        PauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
+
+        if (PauseMenu != null && scene.name == "MiniGame")
+        {
+            PauseMenu.SetActive(false);
+        }
+
+        if ( scene.name == "MiniGame")
+        {
+            CanPause = true;
+        }
+        else
+        {
+            CanPause = false;
+        }
     }
 
     public void PlayB()
     {
         CanPause = true;
+        PauseMenu.SetActive(true);
         SceneManager.LoadScene("MiniGame");
     }
 

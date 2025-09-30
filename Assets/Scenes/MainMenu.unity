@@ -357,6 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 160437201}
   - component: {fileID: 160437200}
+  - component: {fileID: 160437202}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -393,9 +394,22 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1859941644}
+  - {fileID: 1583890869}
   - {fileID: 1556078122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &160437202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160437199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4996657f04f65d4fb3bdb784b64cdbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &207593977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,7 +2291,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 485676217}
-  - {fileID: 1583890869}
   m_Father: {fileID: 160437201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1556078123
@@ -2292,6 +2305,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1823d7f3ded1b40a17e1977eed6ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanPause: 0
+  IsPaused: 0
+  PauseMenu: {fileID: 0}
 --- !u!1 &1583890868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,11 +2322,11 @@ GameObject:
   - component: {fileID: 1583890870}
   m_Layer: 0
   m_Name: PauseMenu
-  m_TagString: Untagged
+  m_TagString: PauseMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1583890869
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2327,7 +2343,7 @@ RectTransform:
   - {fileID: 1819119734}
   - {fileID: 1414090921}
   - {fileID: 489882443}
-  m_Father: {fileID: 1556078122}
+  m_Father: {fileID: 160437201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2515,6 +2531,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1823d7f3ded1b40a17e1977eed6ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanPause: 0
+  IsPaused: 0
+  PauseMenu: {fileID: 0}
 --- !u!1 &1755667913
 GameObject:
   m_ObjectHideFlags: 0
