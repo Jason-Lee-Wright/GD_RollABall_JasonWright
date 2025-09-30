@@ -1,4 +1,9 @@
 Make movement based of rhythm/timing
+	Make slider look like a deciple meter (red-orange-yellow-Grren)
+	red bad -> green good
+
+	Add mulitplier when hitting green consitantly???
+
 
 Change player to
 	- Bell

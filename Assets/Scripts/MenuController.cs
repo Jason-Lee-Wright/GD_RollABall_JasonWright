@@ -28,18 +28,6 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void PlayB()
-    {
-        CanPause = true;
-        PauseMenu.SetActive(true);
-        SceneManager.LoadScene("MiniGame");
-    }
-
-    public void QuitB()
-    {
-        Application.Quit();
-    }
-
     private void Update()
     {
         if (CanPause && Input.GetKeyDown(KeyCode.Escape))
@@ -69,5 +57,24 @@ public class MenuController : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void PlayB()
+    {
+        CanPause = true;
+        PauseMenu.SetActive(true);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MiniGame");
+    }
+
+    public void QuitB()
+    {
+        Application.Quit();
+    }
+
+    public void MainMenuB()
+    {
+        Time.timeScale = 0f;
+        SceneManager.LoadScene("MainMenu");
     }
 }
