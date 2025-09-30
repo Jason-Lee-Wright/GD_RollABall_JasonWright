@@ -1,12 +1,14 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PickUpLogic : MonoBehaviour
 {
     private GameManager gameManager;
 
     public GameObject Player;
-    private void Start()
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         gameManager = FindAnyObjectByType<GameManager>();
     }
@@ -36,5 +38,17 @@ public class PickUpLogic : MonoBehaviour
         gameManager.uiManager.Win_Lose("You Lose");
         gameManager.uiManager.LoseState();
         Destroy(Player);
+    }
+
+
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

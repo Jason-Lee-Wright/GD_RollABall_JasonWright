@@ -10,5 +10,5 @@ public class GameTiming : MonoBehaviour
 
 static class TimingEvents
 {
-    new static Action PulseEvent;
+    static Action PulseEvent;
 }
