@@ -1,8 +1,8 @@
 Make movement based of rhythm/timing
-	Make slider look like a deciple meter (red-orange-yellow-Grren)
+	Make slider look like a decibel meter (red-orange-yellow-Green)
 	red bad -> green good
 
-	Add mulitplier when hitting green consitantly???
+	Add multiplier when hitting green consistently???
 
 
 Change player to
