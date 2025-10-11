@@ -3,7 +3,22 @@ guid: c9ccd223e33f40c468448c1168da1671
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BellTexture
+    second: {fileID: 2100000, guid: 2a625a10885da5849a8fc144b76fb800, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: InnerBell
+    second: {fileID: 2100000, guid: bf30349168bb4934284d9d5b81e3a36f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: standardSurface1
+    second: {fileID: 2100000, guid: 7bca97b8ede6aac4f8b2818863047cbe, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
