@@ -10,7 +10,7 @@ public class PickUpLogic : MonoBehaviour
 
     public GameObject Player;
 
-    public List<Mesh> PickUpModel = new List<Mesh>();
+    public List<GameObject> PickUpModel = new List<GameObject>();
 
     private List<GameObject> PickUpAmount = new List<GameObject>();
 
@@ -57,7 +57,11 @@ public class PickUpLogic : MonoBehaviour
             
             int RND = Random.Range(0, PickUpModel.Count);
 
-            meshFilter.mesh = PickUpModel[RND];
+            Transform newParent = pickup.transform;
+
+            GameObject originalPrefab = PickUpModel[RND];
+
+            GameObject newObject = Instantiate(originalPrefab, newParent);
         }
     }
 
