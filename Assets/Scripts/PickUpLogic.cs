@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Linq;
 
 public class PickUpLogic : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class PickUpLogic : MonoBehaviour
 
     public GameObject Player;
 
-    public List<GameObject> PickUpModel = new List<GameObject>();
+    public List<Mesh> PickUpModel = new List<Mesh>();
 
-    private List<GameObject> PickUpAmmount = new List<GameObject>();
+    private List<GameObject> PickUpAmount = new List<GameObject>();
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -48,11 +49,15 @@ public class PickUpLogic : MonoBehaviour
 
     void RandomizePickUpModels()
     {
-        GameObject.FindGameObjectsWithTag("PickUp");
+        PickUpAmount.AddRange(GameObject.FindGameObjectsWithTag("PickUp"));
 
-        foreach (GameObject pickup in PickUpModel)
+        foreach (GameObject pickup in PickUpAmount)
         {
-            Random.Range(0, PickUpModel.Count);
+            MeshFilter meshFilter = pickup.GetComponent<MeshFilter>();
+            
+            int RND = Random.Range(0, PickUpModel.Count);
+
+            meshFilter.mesh = PickUpModel[RND];
         }
     }
 
