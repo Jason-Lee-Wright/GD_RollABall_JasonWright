@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class PickUpLogic : MonoBehaviour
 {
@@ -8,9 +9,14 @@ public class PickUpLogic : MonoBehaviour
 
     public GameObject Player;
 
+    public List<GameObject> PickUpModel = new List<GameObject>();
+
+    private List<GameObject> PickUpAmmount = new List<GameObject>();
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         gameManager = FindAnyObjectByType<GameManager>();
+        RandomizePickUpModels();
     }
 
     public void PickUpAction(GameObject HitObject)
@@ -38,6 +44,16 @@ public class PickUpLogic : MonoBehaviour
         gameManager.uiManager.Win_Lose("You Lose");
         gameManager.uiManager.LoseState();
         Destroy(Player);
+    }
+
+    void RandomizePickUpModels()
+    {
+        GameObject.FindGameObjectsWithTag("PickUp");
+
+        foreach (GameObject pickup in PickUpModel)
+        {
+            Random.Range(0, PickUpModel.Count);
+        }
     }
 
 
