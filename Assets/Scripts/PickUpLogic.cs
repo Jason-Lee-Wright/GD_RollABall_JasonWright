@@ -17,7 +17,11 @@ public class PickUpLogic : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         gameManager = FindAnyObjectByType<GameManager>();
-        RandomizePickUpModels();
+
+        if (scene == SceneManager.GetSceneByName("MiniGame"))
+        {
+            RandomizePickUpModels();
+        }
     }
 
     public void PickUpAction(GameObject HitObject)

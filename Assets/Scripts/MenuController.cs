@@ -6,7 +6,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private bool CanPause = false;
     [SerializeField] private bool IsPaused = false;
 
-    [SerializeField] private GameObject PauseMenu;
+    public GameObject PauseMenu;
 
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
