@@ -24,7 +24,7 @@ public class CameraMovement : MonoBehaviour
 
     void LateUpdate()
     {
-        x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
+        x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
         y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
 
         Quaternion rotation = Quaternion.Euler(y, x, 0);

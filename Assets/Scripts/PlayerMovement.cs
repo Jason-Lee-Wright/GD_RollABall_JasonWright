@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
 
+    public GameObject PlayerCamera;
+
     public float speed = 5f;
 
     public float BPM = 114f;
@@ -45,6 +47,15 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMove(InputValue movementValue)
     {
+        Vector3 CameraForward = PlayerCamera.transform.forward;
+        Vector3 CameraRight = PlayerCamera.transform.right;
+
+        CameraForward.y = 0;
+        CameraRight.y = 0;
+
+        CameraForward.Normalize();
+        CameraRight.Normalize();
+
         Vector2 movementVector = movementValue.Get<Vector2>();
         if (movementVector == Vector2.zero) return;
 
@@ -54,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         float closeness = 1f - (distanceToBeat / (BeatInterval / 2f));
         closeness = Mathf.Clamp01(closeness);
 
-        Vector3 movement = new Vector3(movementVector.x, 0f, movementVector.y);
+        Vector3 movement = (CameraRight * movementVector.x) + (CameraForward * movementVector.y);
         rb.linearVelocity = movement.normalized * speed * closeness;
     }
 

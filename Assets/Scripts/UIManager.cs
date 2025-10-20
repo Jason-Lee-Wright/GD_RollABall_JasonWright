@@ -16,8 +16,6 @@ public class UIManager : MonoBehaviour
     {
         ScoreCount++;
 
-        Debug.Log("Score" + ScoreCount);
-
         ScoreText.text = $"Score: {ScoreCount} / 12";
 
         if (ScoreCount >= 12)
