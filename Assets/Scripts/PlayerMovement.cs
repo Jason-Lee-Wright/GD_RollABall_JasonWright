@@ -11,17 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Slider BPMSlider;
 
-    private GameManager gameManager;
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        gameManager = FindAnyObjectByType<GameManager>();
-        BPMSlider = FindAnyObjectByType<Slider>();
-    }
+    public GameManager gameManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        BPMSlider = FindAnyObjectByType<Slider>();
     }
 
     void Update()
@@ -61,7 +56,4 @@ public class PlayerMovement : MonoBehaviour
     {
         gameManager.pickUpLogic.PickUpAction(collision.gameObject);
     }
-
-    private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
-    private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 }

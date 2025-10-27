@@ -69,8 +69,6 @@ public class PickUpLogic : MonoBehaviour
         }
     }
 
-
-
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;

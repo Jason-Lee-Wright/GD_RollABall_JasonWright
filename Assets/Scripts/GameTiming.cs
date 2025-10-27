@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class GameTiming
 {
-    public static float BPM = 114f;
+    public static float BPM = 57f;
     public static float BeatInterval => 60f / BPM;
 
     public static float SongPosition { get; private set; }
@@ -28,10 +28,8 @@ public static class GameTiming
 
     public static float GetClosenessToBeat()
     {
-        float timeSinceLastBeat = SongPosition % BeatInterval;
-        float distanceToBeat = Mathf.Min(timeSinceLastBeat, BeatInterval - timeSinceLastBeat);
-
-        float closeness = 1f - (distanceToBeat / (BeatInterval / 2f));
+        float beatProgress = (SongPosition % BeatInterval) / BeatInterval;
+        float closeness = 1f - beatProgress; // 1 on beat, 0 before next
         return Mathf.Clamp01(closeness);
     }
 }

@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText, WinText;
 
-    private int ScoreCount = 0;
+    public int ScoreCount = 0;
 
     private void Start()
     {
@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
         WinText.gameObject.SetActive(true);
         Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         Time.timeScale = 0.0f;
+        ScoreText.text = string.Empty;
+        ScoreCount = 0;
     }
 
     public void LoseState()
