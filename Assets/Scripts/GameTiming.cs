@@ -1,14 +1,47 @@
 using System;
 using UnityEngine;
 
-public class GameTiming : MonoBehaviour
+public static class GameTiming
 {
-    public float BPMGlobal = 114f;
+    public static float BPM = 114f;
+    public static float BeatInterval => 60f / BPM;
 
+    public static float SongPosition { get; private set; }
+    public static float BeatProgress { get; private set; }
 
+    private static float lastBeatTime;
+
+    public static void UpdateTiming()
+    {
+        SongPosition += Time.deltaTime;
+        if (SongPosition > (60f/BPM)*1000f) SongPosition = 0f;
+
+        BeatProgress = (SongPosition % BeatInterval) / BeatInterval;
+
+        // Detect when a new beat starts
+        if (SongPosition - lastBeatTime >= BeatInterval)
+        {
+            lastBeatTime = SongPosition;
+            TimingEvents.TriggerPulse();
+        }
+    }
+
+    public static float GetClosenessToBeat()
+    {
+        float timeSinceLastBeat = SongPosition % BeatInterval;
+        float distanceToBeat = Mathf.Min(timeSinceLastBeat, BeatInterval - timeSinceLastBeat);
+
+        float closeness = 1f - (distanceToBeat / (BeatInterval / 2f));
+        return Mathf.Clamp01(closeness);
+    }
 }
 
-static class TimingEvents
+public static class TimingEvents
 {
-    static Action PulseEvent;
+    public static event Action OnPulse;
+
+    public static void TriggerPulse()
+    {
+        OnPulse?.Invoke();
+    }
 }
