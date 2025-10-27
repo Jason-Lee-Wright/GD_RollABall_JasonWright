@@ -29,7 +29,7 @@ public static class GameTiming
     public static float GetClosenessToBeat()
     {
         float beatProgress = (SongPosition % BeatInterval) / BeatInterval;
-        float closeness = 1f - beatProgress; // 1 on beat, 0 before next
+        float closeness = beatProgress;
         return Mathf.Clamp01(closeness);
     }
 }

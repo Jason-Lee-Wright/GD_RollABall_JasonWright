@@ -7,7 +7,8 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector] public PlayerMovement playerMovement;
-    [HideInInspector] public PickUpLogic pickUpLogic;
-    [HideInInspector] public UIManager uiManager;
+    public PlayerMovement playerMovement;
+    public PickUpLogic pickUpLogic;
+    public UIManager uiManager;
+    public CameraMovement cameraMovement;
 }

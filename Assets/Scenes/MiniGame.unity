@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbfc5f2a81d0904fb47a5e0ca79e446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 278491513}
   PickUpModel:
   - {fileID: 6821758993890485284, guid: 046fa72d9d56e294d9564298843dd4a9, type: 3}
   - {fileID: 468582402121133472, guid: c138b6e293c03dd4db3d75f4de2800b7, type: 3}
@@ -1360,6 +1360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 278491513}
+  CameraCanMove: 1
   distance: 10
   xSpeed: 120
   ySpeed: 120
@@ -6908,6 +6909,7 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   pickUpLogic: {fileID: 98832664}
   uiManager: {fileID: 111192238}
+  cameraMovement: {fileID: 330585548}
 --- !u!4 &1049978790
 Transform:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class CameraMovement : MonoBehaviour
 {
     public GameObject player;
 
+    public bool CameraCanMove = true;
+
     public float distance = 5.0f;
 
     public float xSpeed = 120.0f;
@@ -24,13 +26,16 @@ public class CameraMovement : MonoBehaviour
 
     void LateUpdate()
     {
-        x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
-        y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+        if (CameraCanMove)
+        {
+            x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
+            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
 
-        Quaternion rotation = Quaternion.Euler(y, x, 0);
-        Vector3 position = player.transform.position - rotation * Vector3.forward * distance;
+            Quaternion rotation = Quaternion.Euler(y, x, 0);
+            Vector3 position = player.transform.position - rotation * Vector3.forward * distance;
 
-        transform.rotation = rotation;
-        transform.position = position;
+            transform.rotation = rotation;
+            transform.position = position;
+        }
     }
 }
