@@ -18,6 +18,11 @@ public static class GameTiming
 
         BeatProgress = (SongPosition % BeatInterval) / BeatInterval;
 
+        if (BeatProgress <= 0.01f)
+        {
+            //Things can happen IE enemy movement.
+        }
+
         // Detect when a new beat starts
         if (SongPosition - lastBeatTime >= BeatInterval)
         {
