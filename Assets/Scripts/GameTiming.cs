@@ -1,15 +1,21 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public static class GameTiming
 {
-    public static float BPM = 57f;
+    public static float BPM = 60f;
     public static float BeatInterval => 60f / BPM;
 
     public static float SongPosition { get; private set; }
     public static float BeatProgress { get; private set; }
 
     private static float lastBeatTime;
+
+    public static void StartTiming()
+    {
+        SongPosition = 0f;
+    }
 
     public static void UpdateTiming()
     {

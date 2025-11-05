@@ -6,7 +6,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private bool CanPause = true;
     [SerializeField] private bool IsPaused = false;
 
-    public GameObject PauseMenu;
+    public GameObject PauseMenu, TutorialScreen;
     public GameManager gameManager;
 
     private void Start()
@@ -21,33 +21,71 @@ public class MenuController : MonoBehaviour
 
     private void Update()
     {
-        if (PauseMenu != null)
+        // Escape = toggle pause
+        if (PauseMenu != null && CanPause && Input.GetKeyDown(KeyCode.Escape))
         {
-            if (CanPause && Input.GetKeyDown(KeyCode.Escape))
+            bool pauseMenuActive = PauseMenu.activeSelf;
+
+            if (pauseMenuActive)
             {
-                if (!IsPaused)
-                {
-                    PauseMenu.SetActive(true);
-                    IsPaused = true;
-                    gameManager.cameraMovement.CameraCanMove = false;
-                    Time.timeScale = 0f;
-                }
-                else if (IsPaused)
-                {
-                    PauseMenu.SetActive(false);
-                    IsPaused = false;
-                    gameManager.cameraMovement.CameraCanMove = true;
-                    Time.timeScale = 1f;
-                }
+                PauseMenu.SetActive(false);
+                ChangeTimeScale(true, "Pause");
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                PauseMenu.SetActive(true);
+                ChangeTimeScale(false, "Pause");
+                Cursor.lockState = CursorLockMode.None;
             }
         }
+
+        if (TutorialScreen != null && Input.GetKeyDown(KeyCode.T))
+        {
+            bool tutorialActive = TutorialScreen.activeSelf;
+
+            if (tutorialActive)
+            {
+                TutorialScreen.SetActive(false);
+                ChangeTimeScale(true, "Tips");
+            }
+            else
+            {
+                TutorialScreen.SetActive(true);
+                ChangeTimeScale(false, "Tips");
+            }
+        }
+
+        Debug.Log(Time.timeScale + " Update");
+    }
+
+    void ChangeTimeScale(bool resumeGame, string menu)
+    {
+        if (menu == "Pause")
+        {
+            if (resumeGame)
+                IsPaused = false;
+            else
+                IsPaused = true;
+        }
+
+        bool anyMenuOpen = (PauseMenu.activeSelf || TutorialScreen.activeSelf);
+
+        if (anyMenuOpen)
+            Time.timeScale = 0f;
+        else
+            Time.timeScale = 1f;
+
+        Debug.Log($"TimeScale changed by {menu}: {Time.timeScale}");
     }
 
     public void PlayB()
     {
         CanPause = true;
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
+        GameTiming.StartTiming();
         SceneManager.LoadScene("MiniGame");
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void QuitB()
