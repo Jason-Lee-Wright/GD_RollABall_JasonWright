@@ -55,8 +55,6 @@ public class MenuController : MonoBehaviour
                 ChangeTimeScale(false, "Tips");
             }
         }
-
-        Debug.Log(Time.timeScale + " Update");
     }
 
     void ChangeTimeScale(bool resumeGame, string menu)
@@ -75,8 +73,6 @@ public class MenuController : MonoBehaviour
             Time.timeScale = 0f;
         else
             Time.timeScale = 1f;
-
-        Debug.Log($"TimeScale changed by {menu}: {Time.timeScale}");
     }
 
     public void PlayB()

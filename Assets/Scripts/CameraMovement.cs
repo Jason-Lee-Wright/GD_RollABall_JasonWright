@@ -26,7 +26,7 @@ public class CameraMovement : MonoBehaviour
 
     void LateUpdate()
     {
-        if (CameraCanMove)
+        if (CameraCanMove && player != null)
         {
             x += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;

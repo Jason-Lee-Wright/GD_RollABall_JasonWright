@@ -994,6 +994,7 @@ GameObject:
   - component: {fileID: 278491520}
   - component: {fileID: 278491519}
   - component: {fileID: 278491518}
+  - component: {fileID: 278491521}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1164,6 +1165,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!81 &278491521
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278491513}
+  m_Enabled: 1
 --- !u!1 &289704161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1291,6 @@ GameObject:
   m_Component:
   - component: {fileID: 330585546}
   - component: {fileID: 330585545}
-  - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   m_Layer: 0
@@ -1292,14 +1300,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &330585544
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -7312,6 +7312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 278491517}
+  maxStepDistance: 5
 --- !u!195 &1102331103
 NavMeshAgent:
   m_ObjectHideFlags: 0
