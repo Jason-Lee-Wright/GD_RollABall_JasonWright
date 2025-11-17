@@ -29,6 +29,16 @@ public class EnemyTeleport : MonoBehaviour
 
         if (NavMesh.CalculatePath(transform.position, player.position, NavMesh.AllAreas, path) && Delay == 2)
         {
+            float distance = Vector3.Distance(transform.position, player.position);
+
+            bool Divided = false;
+
+            if (distance < maxStepDistance)
+            {
+                maxStepDistance = maxStepDistance / 1.5f;
+                Divided = true;
+            }
+
             if (path.corners.Length > 1)
             {
                 Vector3 nextPoint = path.corners[1];
@@ -40,6 +50,8 @@ public class EnemyTeleport : MonoBehaviour
 
                 Delay = 0;
             }
+
+            if (Divided) maxStepDistance = maxStepDistance * 1.5f;
         }
     }
 }

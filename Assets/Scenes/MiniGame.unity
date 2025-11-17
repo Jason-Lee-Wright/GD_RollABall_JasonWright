@@ -7312,7 +7312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 278491517}
-  maxStepDistance: 5
+  maxStepDistance: 4
 --- !u!195 &1102331103
 NavMeshAgent:
   m_ObjectHideFlags: 0
