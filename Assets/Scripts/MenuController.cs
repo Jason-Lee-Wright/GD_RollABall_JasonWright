@@ -89,6 +89,10 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
 
+    public void RestartB()
+    {
+        SceneManager.LoadScene("MiniGame");
+    }
     public void MainMenuB()
     {
         Time.timeScale = 0f;
