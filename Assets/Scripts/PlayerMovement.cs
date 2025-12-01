@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
     public GameObject PlayerCamera;
-    public float speed = 5f;
+    public float speed = 8f;
+    public float MaxVelosity = 5f;
 
     public Slider BPMSlider;
 
@@ -25,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
             BPMSlider.value = GameTiming.BeatProgress;
 
         GameTiming.UpdateTiming();
+
+        if (rb.linearVelocity.sqrMagnitude > MaxVelosity)
+        {
+            rb.linearVelocity *= 0.999f;
+        }
     }
 
     void OnMove(InputValue movementValue)
