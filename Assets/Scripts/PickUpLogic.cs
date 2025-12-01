@@ -42,6 +42,7 @@ public class PickUpLogic : MonoBehaviour
     void PickUpPoint()
     {
         gameManager.uiManager.ScoreIncrease();
+        gameManager.proxyManager.IncreaseRadius();
     }
 
     void EnemyHit()

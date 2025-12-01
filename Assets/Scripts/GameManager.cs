@@ -11,4 +11,5 @@ public class GameManager : MonoBehaviour
     public PickUpLogic pickUpLogic;
     public UIManager uiManager;
     public CameraMovement cameraMovement;
+    public ProximityColorManager proxyManager;
 }
